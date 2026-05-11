@@ -52,7 +52,7 @@ export function Layout({ children, currentPage, onNavigate }: Props) {
         <div className="p-3 border-t border-white/10">
           <div className="bg-white/5 rounded-lg p-3">
             <p className="text-[9px] text-[#c9a84c]/50 uppercase tracking-wider mb-1">Powered by</p>
-            <p className="text-[11px] font-medium text-white/70">Amazon Bedrock + Databricks</p>
+            <p className="text-[11px] font-medium text-white/70">dataRain</p>
           </div>
         </div>
       </aside>
