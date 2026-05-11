@@ -35,15 +35,15 @@ export function Dashboard({ onNavigate }: Props) {
       {/* Metrics */}
       <div className="grid grid-cols-4 gap-4">
         {metrics.map((m) => (
-          <div key={m.label} className="bg-white rounded-xl border border-gray-100 p-5 shadow-sm">
+          <div key={m.label} className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 p-5 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-3">
               <span className={`inline-flex items-center justify-center w-9 h-9 rounded-lg ${m.color}`}>
                 {m.icon}
               </span>
               <TrendingUp size={14} className="text-gray-400" />
             </div>
-            <p className="text-2xl font-bold text-gray-900">{m.value}</p>
-            <p className="text-xs text-gray-500 mt-1">{m.label}</p>
+            <p className="text-2xl font-bold text-gray-900 dark:text-white">{m.value}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{m.label}</p>
             <p className="text-[11px] text-gray-400 mt-0.5">{m.change}</p>
           </div>
         ))}
@@ -51,27 +51,27 @@ export function Dashboard({ onNavigate }: Props) {
 
       <div className="grid grid-cols-3 gap-6">
         {/* Agent Status */}
-        <div className="col-span-2 bg-white rounded-xl border border-gray-100 shadow-sm">
-          <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
-            <h3 className="font-semibold text-gray-800">Status dos Agentes</h3>
+        <div className="col-span-2 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+          <div className="px-6 py-4 border-b border-gray-100 dark:border-gray-700 flex items-center justify-between">
+            <h3 className="font-semibold text-gray-800 dark:text-white">Status dos Agentes</h3>
             <button onClick={() => onNavigate('catalogo')} className="text-xs text-blue-600 hover:underline cursor-pointer">
               Ver catálogo completo →
             </button>
           </div>
-          <div className="divide-y divide-gray-50">
+          <div className="divide-y divide-gray-50 dark:divide-gray-700">
             {agentStatus.map((agent) => (
               <div key={agent.name} className="px-6 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <StatusBadge status={agent.status} />
-                  <span className="text-sm font-medium text-gray-700">{agent.name}</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{agent.name}</span>
                 </div>
-                <div className="flex items-center gap-6 text-xs text-gray-500">
+                <div className="flex items-center gap-6 text-xs text-gray-500 dark:text-gray-400">
                   <span className="flex items-center gap-1">
                     <Clock size={12} />
                     {agent.executions} exec
                   </span>
                   {agent.accuracy > 0 && (
-                    <span className="font-medium text-gray-700">{agent.accuracy}% acc</span>
+                    <span className="font-medium text-gray-700 dark:text-gray-300">{agent.accuracy}% acc</span>
                   )}
                 </div>
               </div>
@@ -80,9 +80,9 @@ export function Dashboard({ onNavigate }: Props) {
         </div>
 
         {/* Recent Alerts */}
-        <div className="bg-white rounded-xl border border-gray-100 shadow-sm">
-          <div className="px-6 py-4 border-b border-gray-100">
-            <h3 className="font-semibold text-gray-800">Alertas Recentes</h3>
+        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+          <div className="px-6 py-4 border-b border-gray-100 dark:border-gray-700">
+            <h3 className="font-semibold text-gray-800 dark:text-white">Alertas Recentes</h3>
           </div>
           <div className="divide-y divide-gray-50">
             {recentAlerts.map((alert, i) => (
@@ -104,8 +104,8 @@ export function Dashboard({ onNavigate }: Props) {
       </div>
 
       {/* Architecture Overview */}
-      <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
-        <h3 className="font-semibold text-gray-800 mb-4">Arquitetura da Plataforma</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-6">
+        <h3 className="font-semibold text-gray-800 dark:text-white mb-4">Arquitetura da Plataforma</h3>
         <div className="grid grid-cols-5 gap-3">
           {[
             { label: 'Fontes de Dados', desc: 'Prontuários, Sinais Vitais, Labs', color: 'border-blue-200 bg-blue-50' },
