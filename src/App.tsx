@@ -1,5 +1,6 @@
-import { useState, createContext, useContext } from 'react'
+import { useState } from 'react'
 import { Layout } from './components/Layout'
+import { Hero } from './pages/Hero'
 import { Dashboard } from './pages/Dashboard'
 import { Catalogo } from './pages/Catalogo'
 import { Prontuario } from './pages/Prontuario'
@@ -9,21 +10,14 @@ import { ROI } from './pages/ROI'
 import { SinaisVitais } from './pages/SinaisVitais'
 import { Arquitetura } from './pages/Arquitetura'
 
-export type Page = 'dashboard' | 'catalogo' | 'prontuario' | 'orquestracao' | 'governanca' | 'roi' | 'sinais' | 'arquitetura'
-
-interface DarkModeContextType {
-  dark: boolean
-  toggle: () => void
-}
-
-export const DarkModeContext = createContext<DarkModeContextType>({ dark: false, toggle: () => {} })
-export const useDarkMode = () => useContext(DarkModeContext)
+export type Page = 'hero' | 'dashboard' | 'catalogo' | 'prontuario' | 'orquestracao' | 'governanca' | 'roi' | 'sinais' | 'arquitetura'
 
 function App() {
-  const [page, setPage] = useState<Page>('dashboard')
-  const [dark, setDark] = useState(false)
+  const [page, setPage] = useState<Page>('hero')
 
-  const toggle = () => setDark(prev => !prev)
+  if (page === 'hero') {
+    return <Hero onEnter={setPage} />
+  }
 
   const renderPage = () => {
     switch (page) {
@@ -39,13 +33,9 @@ function App() {
   }
 
   return (
-    <DarkModeContext.Provider value={{ dark, toggle }}>
-      <div className={dark ? 'dark' : ''}>
-        <Layout currentPage={page} onNavigate={setPage}>
-          {renderPage()}
-        </Layout>
-      </div>
-    </DarkModeContext.Provider>
+    <Layout currentPage={page} onNavigate={setPage}>
+      {renderPage()}
+    </Layout>
   )
 }
 
