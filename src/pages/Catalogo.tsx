@@ -20,42 +20,42 @@ interface Agent {
 const agents: Agent[] = [
   {
     id: '1', name: 'Extrator de Prontuário', description: 'Extrai dados estruturados de prontuários eletrônicos (diagnósticos, medicações, procedimentos)',
-    lifecycle: 'production', model: 'Claude 3.5 Sonnet', dataSource: 'Tasy/MV', owner: 'Time Dados Clínicos',
+    lifecycle: 'production', model: 'Claude 4.7 Sonnet', dataSource: 'Tasy/MV', owner: 'Time Dados Clínicos',
     version: '2.3.1', lastUpdate: '2026-05-10', executions: 14230, tags: ['prontuário', 'extração', 'NLP']
   },
   {
     id: '2', name: 'Análise de Risco Clínico', description: 'Avalia risco de deterioração com base em sinais vitais, labs e evolução clínica',
-    lifecycle: 'production', model: 'Claude 3.5 Sonnet', dataSource: 'Sinais Vitais + Labs', owner: 'Time IA Clínica',
+    lifecycle: 'production', model: 'Claude 4.7 Sonnet', dataSource: 'Sinais Vitais + Labs', owner: 'Time IA Clínica',
     version: '1.8.0', lastUpdate: '2026-05-09', executions: 8920, tags: ['risco', 'predição', 'sinais vitais']
   },
   {
     id: '3', name: 'Gerador de Alertas', description: 'Gera alertas contextualizados para equipe médica com recomendações de ação',
-    lifecycle: 'production', model: 'Claude 3 Haiku', dataSource: 'Output Agentes', owner: 'Time IA Clínica',
+    lifecycle: 'production', model: 'Claude 4 Haiku', dataSource: 'Output Agentes', owner: 'Time IA Clínica',
     version: '1.5.2', lastUpdate: '2026-05-08', executions: 5670, tags: ['alertas', 'notificação', 'ação']
   },
   {
     id: '4', name: 'Sumarizador de Evolução', description: 'Resume evolução clínica do paciente em linguagem acessível para handoff entre equipes',
-    lifecycle: 'homologation', model: 'Claude 3.5 Sonnet', dataSource: 'Prontuário + Notas', owner: 'Time Dados Clínicos',
+    lifecycle: 'homologation', model: 'Claude 4.7 Sonnet', dataSource: 'Prontuário + Notas', owner: 'Time Dados Clínicos',
     version: '0.9.4', lastUpdate: '2026-05-07', executions: 1240, tags: ['sumarização', 'evolução', 'handoff']
   },
   {
     id: '5', name: 'Classificador de Medicações', description: 'Classifica e valida prescrições, identifica interações medicamentosas',
-    lifecycle: 'production', model: 'Claude 3 Haiku', dataSource: 'Prescrições + Anvisa DB', owner: 'Time Farmácia',
+    lifecycle: 'production', model: 'Claude 4 Haiku', dataSource: 'Prescrições + Anvisa DB', owner: 'Time Farmácia',
     version: '3.1.0', lastUpdate: '2026-05-06', executions: 22100, tags: ['medicação', 'interação', 'validação']
   },
   {
     id: '6', name: 'Preditor de Deterioração v2', description: 'Nova versão com modelo multimodal incluindo imagens de exames',
-    lifecycle: 'development', model: 'Claude 3.5 Sonnet v2', dataSource: 'Multimodal', owner: 'Time IA Clínica',
+    lifecycle: 'development', model: 'Claude 4.7 Sonnet', dataSource: 'Multimodal', owner: 'Time IA Clínica',
     version: '0.2.0', lastUpdate: '2026-05-11', executions: 45, tags: ['predição', 'multimodal', 'experimental']
   },
   {
     id: '7', name: 'Analisador de Exames Lab', description: 'Interpreta resultados laboratoriais e correlaciona com quadro clínico',
-    lifecycle: 'homologation', model: 'Claude 3.5 Sonnet', dataSource: 'Sistema Lab', owner: 'Time Dados Clínicos',
+    lifecycle: 'homologation', model: 'Claude 4.7 Sonnet', dataSource: 'Sistema Lab', owner: 'Time Dados Clínicos',
     version: '1.0.0-rc1', lastUpdate: '2026-05-10', executions: 890, tags: ['laboratório', 'exames', 'correlação']
   },
   {
     id: '8', name: 'Codificador CID-10', description: 'Sugere códigos CID-10 com base no prontuário (descontinuado - substituído pelo Extrator v2)',
-    lifecycle: 'deprecated', model: 'Claude 3 Haiku', dataSource: 'Prontuário', owner: 'Time Dados Clínicos',
+    lifecycle: 'deprecated', model: 'Claude 4 Haiku', dataSource: 'Prontuário', owner: 'Time Dados Clínicos',
     version: '1.2.0', lastUpdate: '2026-03-15', executions: 0, tags: ['CID', 'codificação', 'legacy']
   },
 ]

@@ -46,7 +46,7 @@ const layers: { name: string; color: string; headerColor: string; services: Serv
     color: 'border-amber-500/20 bg-amber-500/5',
     headerColor: 'bg-amber-500/10 text-amber-300',
     services: [
-      { name: 'Amazon Bedrock', desc: 'Agents + Claude 3.5 + Guardrails', icon: <Bot size={16} className="text-amber-400" /> },
+      { name: 'Amazon Bedrock', desc: 'Agents + Claude 4.7 + Guardrails', icon: <Bot size={16} className="text-amber-400" /> },
       { name: 'Bedrock Knowledge Bases', desc: 'RAG com prontuários e protocolos', icon: <BookOpen size={16} className="text-amber-400" /> },
       { name: 'Amazon SageMaker', desc: 'Modelos custom de predição', icon: <Brain size={16} className="text-amber-400" /> },
       { name: 'AWS Step Functions', desc: 'Orquestração multi-agente', icon: <RefreshCw size={16} className="text-amber-400" /> },
@@ -151,7 +151,7 @@ export function Arquitetura() {
       {/* Key Decisions */}
       <div className="grid grid-cols-3 gap-4">
         {[
-          { title: 'Por que Bedrock?', icon: <Bot size={16} className="text-[#c9a84c]" />, points: ['Agentes nativos com guardrails', 'Claude 3.5 Sonnet (melhor raciocínio)', 'Knowledge Bases para RAG', 'Pay-per-use, sem GPU reservada'] },
+          { title: 'Por que Bedrock?', icon: <Bot size={16} className="text-[#c9a84c]" />, points: ['Agentes nativos com guardrails', 'Claude 4.7 Sonnet (melhor raciocínio)', 'Knowledge Bases para RAG', 'Pay-per-use, sem GPU reservada'] },
           { title: 'Por que Databricks?', icon: <Database size={16} className="text-[#c9a84c]" />, points: ['Unity Catalog (governança)', 'Delta Lake (ACID em data lake)', 'MLflow para MLOps', 'Já utilizado pela Rede D\'Or'] },
           { title: 'Segurança & Compliance', icon: <Lock size={16} className="text-[#c9a84c]" />, points: ['VPC isolada + PrivateLink', 'Criptografia KMS em repouso', 'CloudTrail + GuardDuty', 'LGPD + HIPAA ready'] },
         ].map((card) => (
