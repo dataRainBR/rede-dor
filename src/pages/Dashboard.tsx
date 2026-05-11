@@ -115,7 +115,7 @@ export function Dashboard({ onNavigate }: Props) {
                     alert.severity === 'critical' ? 'text-red-400' :
                     alert.severity === 'warning' ? 'text-amber-400' : 'text-blue-400'
                   }`}>
-                    {alert.severity === 'critical' && '● '}{alert.type}
+                    {alert.severity === 'critical' && <span className="inline-block w-1.5 h-1.5 bg-red-400 rounded-full mr-1" />}{alert.type}
                   </span>
                   <span className="text-[10px] text-white/20 font-mono">{alert.time}</span>
                 </div>

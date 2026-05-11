@@ -49,7 +49,7 @@ const initialSteps: AnalysisStep[] = [
 ]
 
 const stepOutputs = [
-  `✓ Dados extraídos com sucesso:
+  `Dados extraídos com sucesso:
 • Paciente: Maria Silva Santos, 72a, F
 • Diagnóstico: ICC descompensada + FA alta resposta
 • Sinais críticos: PA 88/52, FC 142, SpO2 89%, FR 28
@@ -57,7 +57,7 @@ const stepOutputs = [
 • Medicações: 4 drogas ativas (1 vasoativa)
 • Tendência: deterioração progressiva nas últimas 6h`,
 
-  `⚠️ RISCO ALTO DE DETERIORAÇÃO — Score: 9.2/10
+  `RISCO ALTO DE DETERIORAÇÃO — Score: 9.2/10
 
 Fatores de risco identificados:
 • Choque cardiogênico em evolução (PA↓ + Lactato↑ + oligúria)
@@ -70,7 +70,7 @@ Fatores de risco identificados:
 Probabilidade de evento adverso em 4h: 78%
 Probabilidade de IOT em 6h: 65%`,
 
-  `🚨 ALERTA CRÍTICO GERADO
+  `ALERTA CRÍTICO GERADO
 
 Para: Equipe UTI Cardiológica — Leito 412-A
 Prioridade: URGENTE (Nível 1)

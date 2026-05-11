@@ -66,9 +66,9 @@ export function SinaisVitais() {
   useEffect(() => {
     if (score > 7 && alerts.length === 0) {
       setAlerts([
-        '🚨 ALERTA: Score de deterioração > 7.0 — Risco elevado',
-        '⚡ Agente de Análise de Risco ativado automaticamente',
-        '📋 Notificação enviada para equipe médica do leito 412-A',
+        'ALERTA: Score de deterioração > 7.0 — Risco elevado',
+        'Agente de Análise de Risco ativado automaticamente',
+        'Notificação enviada para equipe médica do leito 412-A',
       ])
     }
   }, [score])
@@ -113,11 +113,11 @@ export function SinaisVitais() {
         <div className="flex gap-2">
           {!deteriorating ? (
             <button onClick={startDeterioration} className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-medium hover:bg-red-700 cursor-pointer transition-colors">
-              ⚡ Simular Deterioração
+              Simular Deterioração
             </button>
           ) : (
             <button onClick={reset} className="px-4 py-2 bg-gray-600 text-white rounded-lg text-sm font-medium hover:bg-gray-700 cursor-pointer transition-colors">
-              ↺ Reset
+              Reset
             </button>
           )}
         </div>

@@ -195,7 +195,7 @@ function NodeCard({ node, isActive, isPast }: { node: WorkflowNode; isActive: bo
       )}
       {isPast && (
         <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 rounded-full">
-          ✓ OK
+          OK
         </span>
       )}
     </div>
