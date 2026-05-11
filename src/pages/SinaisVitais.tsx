@@ -96,12 +96,12 @@ export function SinaisVitais() {
       {/* Controls */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-4 py-2">
+          <div className="flex items-center gap-2 glass-card border border-white/10 rounded-lg px-4 py-2">
             <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Leito 412-A — Maria Silva Santos, 72a</span>
+            <span className="text-sm font-medium text-white/70">Leito 412-A — Maria Silva Santos, 72a</span>
           </div>
           <div className={`flex items-center gap-2 px-4 py-2 rounded-lg border ${
-            score > 7 ? 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800' :
+            score > 7 ? 'bg-red-500/10 border-red-500/20' :
             score > 5 ? 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800' :
             'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800'
           }`}>
@@ -128,20 +128,20 @@ export function SinaisVitais() {
         {vitals.map((v) => {
           const isCritical = v.value <= v.criticalLow || v.value >= v.criticalHigh
           return (
-            <div key={v.label} className={`bg-white dark:bg-gray-800 rounded-xl border shadow-sm p-4 transition-all ${
-              isCritical ? 'border-red-300 dark:border-red-700 shadow-red-100 dark:shadow-red-900/20' : 'border-gray-100 dark:border-gray-700'
+            <div key={v.label} className={`glass-card rounded-2xl border p-4 transition-all ${
+              isCritical ? 'border-red-500/20' : 'border-white/10'
             }`}>
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <span style={{ color: v.color }}>{v.icon}</span>
-                  <span className="text-xs font-medium text-gray-500 dark:text-gray-400">{v.label}</span>
+                  <span className="text-xs font-medium text-white/50">{v.label}</span>
                 </div>
                 {isCritical && <AlertTriangle size={14} className="text-red-500 animate-pulse" />}
               </div>
-              <p className={`text-2xl font-bold ${isCritical ? 'text-red-600' : 'text-gray-900 dark:text-white'}`}>
+              <p className={`text-2xl font-bold ${isCritical ? 'text-red-600' : 'text-white/90'}`}>
                 {v.value}
               </p>
-              <p className="text-[10px] text-gray-400">{v.unit}</p>
+              <p className="text-[10px] text-white/30">{v.unit}</p>
               {/* Mini chart */}
               <div className="mt-3 h-12">
                 <MiniChart data={v.history} color={v.color} criticalHigh={v.criticalHigh} criticalLow={v.criticalLow} min={v.min} max={v.max} />
@@ -153,24 +153,24 @@ export function SinaisVitais() {
 
       {/* Alerts */}
       {alerts.length > 0 && (
-        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-5 animate-fade-in">
+        <div className="bg-red-500/10 border border-red-500/20 rounded-2xl p-5 animate-fade-in">
           <div className="flex items-center gap-2 mb-3">
             <AlertTriangle size={18} className="text-red-600" />
-            <h3 className="font-semibold text-red-800 dark:text-red-300">Alerta Automático — Agente de IA</h3>
+            <h3 className="font-semibold text-red-300">Alerta Automático — Agente de IA</h3>
           </div>
           <div className="space-y-2">
             {alerts.map((a, i) => (
-              <p key={i} className="text-sm text-red-700 dark:text-red-300">{a}</p>
+              <p key={i} className="text-sm text-red-400">{a}</p>
             ))}
           </div>
         </div>
       )}
 
       {/* ECG-like waveform */}
-      <div className="bg-[#0a1628] rounded-xl p-6 border border-gray-800">
+      <div className="bg-[#0a1628] rounded-2xl p-6 border border-gray-800">
         <div className="flex items-center justify-between mb-4">
           <span className="text-xs text-emerald-400 font-mono">ECG Lead II — Monitoramento Contínuo</span>
-          <span className="text-xs text-gray-500 font-mono">25mm/s</span>
+          <span className="text-xs text-white/50 font-mono">25mm/s</span>
         </div>
         <ECGWaveform />
       </div>

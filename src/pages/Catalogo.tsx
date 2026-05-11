@@ -61,10 +61,10 @@ const agents: Agent[] = [
 ]
 
 const lifecycleConfig: Record<Lifecycle, { label: string; color: string; bg: string }> = {
-  development: { label: 'Desenvolvimento', color: 'text-blue-700', bg: 'bg-blue-50 border-blue-200' },
-  homologation: { label: 'Homologação', color: 'text-amber-700', bg: 'bg-amber-50 border-amber-200' },
-  production: { label: 'Produção', color: 'text-emerald-700', bg: 'bg-emerald-50 border-emerald-200' },
-  deprecated: { label: 'Descontinuado', color: 'text-gray-500', bg: 'bg-gray-50 border-gray-200' },
+  development: { label: 'Desenvolvimento', color: 'text-blue-400', bg: 'bg-blue-500/10 border-blue-500/20' },
+  homologation: { label: 'Homologação', color: 'text-amber-400', bg: 'bg-amber-500/10 border-amber-500/20' },
+  production: { label: 'Produção', color: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/20' },
+  deprecated: { label: 'Descontinuado', color: 'text-gray-400', bg: 'bg-gray-500/10 border-gray-500/20' },
 }
 
 export function Catalogo() {
@@ -76,25 +76,25 @@ export function Catalogo() {
   return (
     <div className="space-y-6">
       {/* Lifecycle Pipeline */}
-      <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
-        <h3 className="font-semibold text-gray-800 mb-4">Ciclo de Vida dos Agentes</h3>
+      <div className="glass-card rounded-2xl p-6">
+        <h3 className="font-semibold text-white/90 mb-4">Ciclo de Vida dos Agentes</h3>
         <div className="flex items-center gap-2">
           {(['development', 'homologation', 'production', 'deprecated'] as Lifecycle[]).map((stage, i) => (
             <div key={stage} className="flex items-center gap-2 flex-1">
               <button
                 onClick={() => setFilter(filter === stage ? 'all' : stage)}
-                className={`flex-1 border rounded-lg p-3 text-center transition-all cursor-pointer ${
-                  filter === stage ? lifecycleConfig[stage].bg + ' border-2' : 'border-gray-200 hover:border-gray-300'
+                className={`flex-1 border rounded-2xl p-3 text-center transition-all cursor-pointer ${
+                  filter === stage ? lifecycleConfig[stage].bg + ' border-2' : 'border-white/10 hover:border-white/20 bg-white/[0.02]'
                 }`}
               >
                 <p className={`text-xs font-semibold ${lifecycleConfig[stage].color}`}>
                   {lifecycleConfig[stage].label}
                 </p>
-                <p className="text-lg font-bold text-gray-800 mt-1">
+                <p className="text-lg font-bold text-white mt-1">
                   {agents.filter(a => a.lifecycle === stage).length}
                 </p>
               </button>
-              {i < 3 && <ArrowRight size={16} className="text-gray-300 shrink-0" />}
+              {i < 3 && <ArrowRight size={16} className="text-white/20 shrink-0" />}
             </div>
           ))}
         </div>
@@ -107,8 +107,8 @@ export function Catalogo() {
             <div
               key={agent.id}
               onClick={() => setSelected(agent)}
-              className={`bg-white rounded-xl border p-5 cursor-pointer transition-all ${
-                selected?.id === agent.id ? 'border-blue-300 shadow-md' : 'border-gray-100 shadow-sm hover:border-gray-200'
+              className={`glass-card rounded-2xl border p-5 cursor-pointer transition-all ${
+                selected?.id === agent.id ? 'border-blue-500/30 shadow-md' : 'border-white/10 hover:border-white/20'
               }`}
             >
               <div className="flex items-start justify-between">
@@ -117,15 +117,15 @@ export function Catalogo() {
                     <Bot size={18} className={lifecycleConfig[agent.lifecycle].color} />
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-800 text-sm">{agent.name}</h4>
-                    <p className="text-xs text-gray-500 mt-0.5">{agent.description}</p>
+                    <h4 className="font-medium text-white/90 text-sm">{agent.name}</h4>
+                    <p className="text-xs text-white/50 mt-0.5">{agent.description}</p>
                   </div>
                 </div>
                 <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${lifecycleConfig[agent.lifecycle].bg} ${lifecycleConfig[agent.lifecycle].color}`}>
                   {lifecycleConfig[agent.lifecycle].label}
                 </span>
               </div>
-              <div className="flex items-center gap-4 mt-3 text-[11px] text-gray-400">
+              <div className="flex items-center gap-4 mt-3 text-[11px] text-white/30">
                 <span className="flex items-center gap-1"><Cpu size={10} />{agent.model}</span>
                 <span className="flex items-center gap-1"><Database size={10} />{agent.dataSource}</span>
                 <span>v{agent.version}</span>
@@ -135,7 +135,7 @@ export function Catalogo() {
         </div>
 
         {/* Detail Panel */}
-        <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6 h-fit sticky top-24">
+        <div className="glass-card rounded-2xl border border-white/10 p-6 h-fit sticky top-24">
           {selected ? (
             <div className="space-y-4">
               <div className="flex items-center gap-3">
@@ -143,13 +143,13 @@ export function Catalogo() {
                   <Bot size={20} className={lifecycleConfig[selected.lifecycle].color} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-800 text-sm">{selected.name}</h3>
+                  <h3 className="font-semibold text-white/90 text-sm">{selected.name}</h3>
                   <span className={`text-[10px] font-medium ${lifecycleConfig[selected.lifecycle].color}`}>
                     {lifecycleConfig[selected.lifecycle].label}
                   </span>
                 </div>
               </div>
-              <p className="text-xs text-gray-600">{selected.description}</p>
+              <p className="text-xs text-white/60">{selected.description}</p>
               <div className="space-y-2 text-xs">
                 <DetailRow label="Modelo" value={selected.model} />
                 <DetailRow label="Fonte de Dados" value={selected.dataSource} />
@@ -160,14 +160,14 @@ export function Catalogo() {
               </div>
               <div className="flex flex-wrap gap-1.5 pt-2">
                 {selected.tags.map(tag => (
-                  <span key={tag} className="inline-flex items-center gap-1 text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
+                  <span key={tag} className="inline-flex items-center gap-1 text-[10px] bg-white/[0.02] text-white/60 px-2 py-0.5 rounded-full">
                     <Tag size={8} />{tag}
                   </span>
                 ))}
               </div>
             </div>
           ) : (
-            <div className="text-center py-8 text-gray-400">
+            <div className="text-center py-8 text-white/30">
               <Bot size={32} className="mx-auto mb-2 opacity-50" />
               <p className="text-sm">Selecione um agente para ver detalhes</p>
             </div>
@@ -180,9 +180,9 @@ export function Catalogo() {
 
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between py-1.5 border-b border-gray-50">
-      <span className="text-gray-500">{label}</span>
-      <span className="font-medium text-gray-700">{value}</span>
+    <div className="flex justify-between py-1.5 border-b border-white/5">
+      <span className="text-white/50">{label}</span>
+      <span className="font-medium text-white/70">{value}</span>
     </div>
   )
 }

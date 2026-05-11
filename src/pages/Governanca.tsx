@@ -35,24 +35,24 @@ export function Governanca() {
       {/* Summary Cards */}
       <div className="grid grid-cols-4 gap-4">
         {[
-          { label: 'Eventos Auditados (24h)', value: '12.483', icon: <Eye size={18} />, color: 'bg-blue-50 text-blue-700' },
-          { label: 'Acessos Bloqueados', value: '7', icon: <Lock size={18} />, color: 'bg-red-50 text-red-700' },
-          { label: 'Compliance Score', value: '98.2%', icon: <FileCheck size={18} />, color: 'bg-emerald-50 text-emerald-700' },
-          { label: 'Incidentes Abertos', value: '1', icon: <AlertTriangle size={18} />, color: 'bg-amber-50 text-amber-700' },
+          { label: 'Eventos Auditados (24h)', value: '12.483', icon: <Eye size={18} />, color: 'bg-blue-500/10 text-blue-400' },
+          { label: 'Acessos Bloqueados', value: '7', icon: <Lock size={18} />, color: 'bg-red-500/10 text-red-400' },
+          { label: 'Compliance Score', value: '98.2%', icon: <FileCheck size={18} />, color: 'bg-emerald-500/10 text-emerald-400' },
+          { label: 'Incidentes Abertos', value: '1', icon: <AlertTriangle size={18} />, color: 'bg-amber-500/10 text-amber-400' },
         ].map((m) => (
-          <div key={m.label} className="bg-white rounded-xl border border-gray-100 p-5 shadow-sm">
+          <div key={m.label} className="glass-card rounded-2xl border border-white/10 p-5">
             <span className={`inline-flex items-center justify-center w-9 h-9 rounded-lg ${m.color} mb-3`}>
               {m.icon}
             </span>
             <p className="text-2xl font-bold text-gray-900">{m.value}</p>
-            <p className="text-xs text-gray-500 mt-1">{m.label}</p>
+            <p className="text-xs text-white/50 mt-1">{m.label}</p>
           </div>
         ))}
       </div>
 
       {/* Tabs */}
-      <div className="bg-white rounded-xl border border-gray-100 shadow-sm">
-        <div className="border-b border-gray-100 px-6">
+      <div className="glass-card rounded-2xl border border-white/10">
+        <div className="border-b border-white/5 px-6">
           <div className="flex gap-6">
             {[
               { id: 'audit' as const, label: 'Trilha de Auditoria', icon: <Eye size={14} /> },
@@ -63,7 +63,7 @@ export function Governanca() {
                 key={t.id}
                 onClick={() => setTab(t.id)}
                 className={`flex items-center gap-2 py-4 text-sm border-b-2 transition-all cursor-pointer ${
-                  tab === t.id ? 'border-blue-600 text-blue-600 font-medium' : 'border-transparent text-gray-500 hover:text-gray-700'
+                  tab === t.id ? 'border-blue-600 text-blue-600 font-medium' : 'border-transparent text-white/50 hover:text-white/70'
                 }`}
               >
                 {t.icon}{t.label}
@@ -86,33 +86,33 @@ function AuditTab() {
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
-        <p className="text-sm text-gray-600">Últimos eventos registrados</p>
-        <button className="flex items-center gap-1.5 text-xs text-gray-500 border border-gray-200 rounded-lg px-3 py-1.5 hover:bg-gray-50 cursor-pointer">
+        <p className="text-sm text-white/60">Últimos eventos registrados</p>
+        <button className="flex items-center gap-1.5 text-xs text-white/50 border border-white/10 rounded-lg px-3 py-1.5 hover:bg-white/[0.02] cursor-pointer">
           <Filter size={12} />Filtrar
         </button>
       </div>
-      <div className="overflow-hidden rounded-lg border border-gray-200">
+      <div className="overflow-hidden rounded-lg border border-white/10">
         <table className="w-full text-xs">
-          <thead className="bg-gray-50">
+          <thead className="bg-white/[0.02]">
             <tr>
-              <th className="text-left px-4 py-2.5 font-medium text-gray-600">Hora</th>
-              <th className="text-left px-4 py-2.5 font-medium text-gray-600">Agente</th>
-              <th className="text-left px-4 py-2.5 font-medium text-gray-600">Ação</th>
-              <th className="text-left px-4 py-2.5 font-medium text-gray-600">Paciente</th>
-              <th className="text-left px-4 py-2.5 font-medium text-gray-600">Status</th>
+              <th className="text-left px-4 py-2.5 font-medium text-white/60">Hora</th>
+              <th className="text-left px-4 py-2.5 font-medium text-white/60">Agente</th>
+              <th className="text-left px-4 py-2.5 font-medium text-white/60">Ação</th>
+              <th className="text-left px-4 py-2.5 font-medium text-white/60">Paciente</th>
+              <th className="text-left px-4 py-2.5 font-medium text-white/60">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100">
+          <tbody className="divide-y divide-white/5">
             {auditLogs.map((log, i) => (
-              <tr key={i} className="hover:bg-gray-50">
-                <td className="px-4 py-2.5 text-gray-500 font-mono">{log.time}</td>
+              <tr key={i} className="hover:bg-white/[0.02]">
+                <td className="px-4 py-2.5 text-white/50 font-mono">{log.time}</td>
                 <td className="px-4 py-2.5">
-                  <span className="flex items-center gap-1.5 text-gray-700">
-                    <Bot size={11} className="text-gray-400" />{log.agent}
+                  <span className="flex items-center gap-1.5 text-white/70">
+                    <Bot size={11} className="text-white/30" />{log.agent}
                   </span>
                 </td>
-                <td className="px-4 py-2.5 text-gray-700">{log.action}</td>
-                <td className="px-4 py-2.5 text-gray-500">{log.patient}</td>
+                <td className="px-4 py-2.5 text-white/70">{log.action}</td>
+                <td className="px-4 py-2.5 text-white/50">{log.patient}</td>
                 <td className="px-4 py-2.5">
                   <StatusPill status={log.status} />
                 </td>
@@ -128,24 +128,24 @@ function AuditTab() {
 function PermissionsTab() {
   return (
     <div>
-      <p className="text-sm text-gray-600 mb-4">Matriz de acesso por papel — princípio do menor privilégio</p>
+      <p className="text-sm text-white/60 mb-4">Matriz de acesso por papel — princípio do menor privilégio</p>
       <div className="space-y-3">
         {permissions.map((p) => (
-          <div key={p.role} className="border border-gray-200 rounded-lg p-4">
+          <div key={p.role} className="border border-white/10 rounded-lg p-4">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <User size={14} className="text-gray-500" />
-                <span className="font-medium text-sm text-gray-800">{p.role}</span>
+                <User size={14} className="text-white/50" />
+                <span className="font-medium text-sm text-white/90">{p.role}</span>
               </div>
-              <span className="text-[10px] bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full">{p.dataAccess}</span>
+              <span className="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded-full">{p.dataAccess}</span>
             </div>
             <div className="flex items-center justify-between text-xs">
               <div className="flex flex-wrap gap-1.5">
                 {p.agents.map(a => (
-                  <span key={a} className="bg-gray-100 text-gray-600 px-2 py-0.5 rounded">{a}</span>
+                  <span key={a} className="bg-white/[0.02] text-white/60 px-2 py-0.5 rounded">{a}</span>
                 ))}
               </div>
-              <span className="text-red-500 text-[10px] italic">{p.restrictions}</span>
+              <span className="text-red-400 text-[10px] italic">{p.restrictions}</span>
             </div>
           </div>
         ))}
@@ -157,27 +157,27 @@ function PermissionsTab() {
 function ComplianceTab() {
   return (
     <div>
-      <p className="text-sm text-gray-600 mb-4">Frameworks regulatórios e status de conformidade</p>
+      <p className="text-sm text-white/60 mb-4">Frameworks regulatórios e status de conformidade</p>
       <div className="grid grid-cols-2 gap-4">
         {complianceItems.map((c) => (
           <div key={c.framework} className={`border rounded-lg p-5 ${
-            c.status === 'compliant' ? 'border-emerald-200 bg-emerald-50/30' : 'border-amber-200 bg-amber-50/30'
+            c.status === 'compliant' ? 'border-emerald-500/20 bg-emerald-500/5' : 'border-amber-500/20 bg-amber-500/5'
           }`}>
             <div className="flex items-center justify-between mb-3">
-              <h4 className="font-semibold text-sm text-gray-800">{c.framework}</h4>
+              <h4 className="font-semibold text-sm text-white/90">{c.framework}</h4>
               {c.status === 'compliant' ? (
-                <span className="flex items-center gap-1 text-[10px] font-medium text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded-full">
+                <span className="flex items-center gap-1 text-[10px] font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
                   <CheckCircle2 size={10} />Conforme
                 </span>
               ) : (
-                <span className="flex items-center gap-1 text-[10px] font-medium text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full">
+                <span className="flex items-center gap-1 text-[10px] font-medium text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full">
                   <Clock size={10} />Parcial
                 </span>
               )}
             </div>
             <ul className="space-y-1.5">
               {c.items.map((item, i) => (
-                <li key={i} className="flex items-center gap-2 text-xs text-gray-600">
+                <li key={i} className="flex items-center gap-2 text-xs text-white/60">
                   <CheckCircle2 size={10} className={c.status === 'compliant' ? 'text-emerald-500' : 'text-amber-500'} />
                   {item}
                 </li>
@@ -192,10 +192,10 @@ function ComplianceTab() {
 
 function StatusPill({ status }: { status: string }) {
   const styles: Record<string, string> = {
-    success: 'bg-emerald-50 text-emerald-700',
-    warning: 'bg-amber-50 text-amber-700',
-    error: 'bg-red-50 text-red-700',
-    blocked: 'bg-gray-100 text-gray-600',
+    success: 'bg-emerald-500/10 text-emerald-400',
+    warning: 'bg-amber-500/10 text-amber-400',
+    error: 'bg-red-500/10 text-red-400',
+    blocked: 'bg-white/[0.02] text-white/60',
   }
   const labels: Record<string, string> = {
     success: 'OK',

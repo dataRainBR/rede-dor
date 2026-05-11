@@ -74,16 +74,16 @@ export function Orquestracao() {
           <button
             key={i}
             onClick={() => setSelectedWorkflow(i)}
-            className={`text-left bg-white dark:bg-gray-800 rounded-xl border p-5 transition-all cursor-pointer ${
-              selectedWorkflow === i ? 'border-[#c9a84c] shadow-md ring-1 ring-[#c9a84c]/30' : 'border-gray-100 dark:border-gray-700 shadow-sm hover:border-gray-200'
+            className={`text-left glass-card rounded-2xl border p-5 transition-all cursor-pointer ${
+              selectedWorkflow === i ? 'border-[#c9a84c] shadow-md ring-1 ring-[#c9a84c]/30' : 'border-white/10 hover:border-white/20'
             }`}
           >
             <div className="flex items-center gap-2 mb-2">
-              <GitBranch size={16} className={selectedWorkflow === i ? 'text-[#c9a84c]' : 'text-gray-400'} />
-              <h4 className="font-medium text-sm text-gray-800 dark:text-white">{w.name}</h4>
+              <GitBranch size={16} className={selectedWorkflow === i ? 'text-[#c9a84c]' : 'text-white/30'} />
+              <h4 className="font-medium text-sm text-white/90">{w.name}</h4>
             </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400">{w.description}</p>
-            <div className="flex items-center gap-3 mt-3 text-[10px] text-gray-400">
+            <p className="text-xs text-white/50">{w.description}</p>
+            <div className="flex items-center gap-3 mt-3 text-[10px] text-white/30">
               <span className="flex items-center gap-1"><Zap size={9} />{w.trigger}</span>
             </div>
           </button>
@@ -92,10 +92,10 @@ export function Orquestracao() {
 
       {/* Workflow Detail */}
       <div className="grid grid-cols-3 gap-6">
-        <div className="col-span-2 bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-6">
+        <div className="col-span-2 glass-card rounded-2xl border border-white/10 p-6">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="font-semibold text-gray-800 dark:text-white">{wf.name}</h3>
-            <span className="text-[10px] bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-2 py-0.5 rounded-full font-medium">
+            <h3 className="font-semibold text-white/90">{wf.name}</h3>
+            <span className="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded-full font-medium">
               SLA: {wf.sla}
             </span>
           </div>
@@ -107,7 +107,7 @@ export function Orquestracao() {
                 <NodeCard node={node} isActive={i === activeNode} isPast={i < activeNode} />
                 {i < wf.nodes.length - 1 && (
                   <div className="flex justify-center py-1 relative">
-                    <ArrowDown size={16} className={`transition-colors duration-300 ${i < activeNode ? 'text-[#c9a84c]' : 'text-gray-300 dark:text-gray-600'}`} />
+                    <ArrowDown size={16} className={`transition-colors duration-300 ${i < activeNode ? 'text-[#c9a84c]' : 'text-white/30'}`} />
                     {i === activeNode && (
                       <span className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#c9a84c] rounded-full animate-ping" />
                     )}
@@ -120,8 +120,8 @@ export function Orquestracao() {
 
         {/* Sidebar */}
         <div className="space-y-4">
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-5">
-            <h4 className="font-semibold text-gray-800 dark:text-white text-sm mb-3">Configuração</h4>
+          <div className="glass-card rounded-2xl border border-white/10 p-5">
+            <h4 className="font-semibold text-white/90 text-sm mb-3">Configuração</h4>
             <div className="space-y-3 text-xs">
               <DetailRow label="Trigger" value={wf.trigger} />
               <DetailRow label="SLA" value={wf.sla} />
@@ -131,8 +131,8 @@ export function Orquestracao() {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-5">
-            <h4 className="font-semibold text-gray-800 dark:text-white text-sm mb-3">Guardrails Ativos</h4>
+          <div className="glass-card rounded-2xl border border-white/10 p-5">
+            <h4 className="font-semibold text-white/90 text-sm mb-3">Guardrails Ativos</h4>
             <div className="space-y-2">
               {[
                 'Dados anonimizados entre agentes',
@@ -141,7 +141,7 @@ export function Orquestracao() {
                 'Validação humana para score ≥ 9',
                 'Rate limit: 100 exec/min',
               ].map((g, i) => (
-                <div key={i} className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
+                <div key={i} className="flex items-center gap-2 text-xs text-white/60">
                   <Shield size={11} className="text-emerald-500 shrink-0" />
                   {g}
                 </div>
@@ -149,8 +149,8 @@ export function Orquestracao() {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm p-5">
-            <h4 className="font-semibold text-gray-800 dark:text-white text-sm mb-3">Métricas (24h)</h4>
+          <div className="glass-card rounded-2xl border border-white/10 p-5">
+            <h4 className="font-semibold text-white/90 text-sm mb-3">Métricas (24h)</h4>
             <div className="space-y-3 text-xs">
               <MetricBar label="Execuções" value="1.847" pct={85} />
               <MetricBar label="Sucesso" value="99.2%" pct={99} />
@@ -166,10 +166,10 @@ export function Orquestracao() {
 
 function NodeCard({ node, isActive, isPast }: { node: WorkflowNode; isActive: boolean; isPast: boolean }) {
   const styles = {
-    source: { icon: <Database size={16} />, bg: 'bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800', iconColor: 'text-purple-600' },
-    agent: { icon: <Bot size={16} />, bg: 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800', iconColor: 'text-blue-600' },
-    decision: { icon: <GitBranch size={16} />, bg: 'bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800', iconColor: 'text-amber-600' },
-    output: { icon: <Bell size={16} />, bg: 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800', iconColor: 'text-emerald-600' },
+    source: { icon: <Database size={16} />, bg: 'bg-purple-500/10 border-purple-500/20', iconColor: 'text-purple-400' },
+    agent: { icon: <Bot size={16} />, bg: 'bg-blue-500/10 border-blue-500/20', iconColor: 'text-blue-400' },
+    decision: { icon: <GitBranch size={16} />, bg: 'bg-amber-500/10 border-amber-500/20', iconColor: 'text-amber-400' },
+    output: { icon: <Bell size={16} />, bg: 'bg-emerald-500/10 border-emerald-500/20', iconColor: 'text-emerald-400' },
   }
   const s = styles[node.type]
 
@@ -178,15 +178,15 @@ function NodeCard({ node, isActive, isPast }: { node: WorkflowNode; isActive: bo
       isActive ? 'ring-2 ring-[#c9a84c] shadow-lg scale-[1.02]' :
       isPast ? 'opacity-60' : ''
     }`}>
-      <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-white/80 dark:bg-gray-800/80 ${s.iconColor} relative`}>
+      <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-white/[0.05] ${s.iconColor} relative`}>
         {s.icon}
         {isActive && (
           <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#c9a84c] rounded-full animate-pulse" />
         )}
       </div>
       <div className="flex-1">
-        <p className="text-sm font-medium text-gray-800 dark:text-white">{node.label}</p>
-        <p className="text-[11px] text-gray-500 dark:text-gray-400">{node.description}</p>
+        <p className="text-sm font-medium text-white/90">{node.label}</p>
+        <p className="text-[11px] text-white/50">{node.description}</p>
       </div>
       {isActive && (
         <span className="text-[9px] font-bold text-[#c9a84c] bg-[#c9a84c]/10 px-2 py-0.5 rounded-full animate-pulse">
@@ -194,7 +194,7 @@ function NodeCard({ node, isActive, isPast }: { node: WorkflowNode; isActive: bo
         </span>
       )}
       {isPast && (
-        <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 rounded-full">
+        <span className="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
           OK
         </span>
       )}
@@ -204,9 +204,9 @@ function NodeCard({ node, isActive, isPast }: { node: WorkflowNode; isActive: bo
 
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between py-1.5 border-b border-gray-50 dark:border-gray-700">
-      <span className="text-gray-500 dark:text-gray-400">{label}</span>
-      <span className="font-medium text-gray-700 dark:text-gray-200 text-right">{value}</span>
+    <div className="flex justify-between py-1.5 border-b border-white/5">
+      <span className="text-white/50">{label}</span>
+      <span className="font-medium text-white/70 text-right">{value}</span>
     </div>
   )
 }
@@ -215,10 +215,10 @@ function MetricBar({ label, value, pct }: { label: string; value: string; pct: n
   return (
     <div>
       <div className="flex justify-between mb-1">
-        <span className="text-gray-500 dark:text-gray-400">{label}</span>
-        <span className="font-medium text-gray-700 dark:text-gray-200">{value}</span>
+        <span className="text-white/50">{label}</span>
+        <span className="font-medium text-white/70">{value}</span>
       </div>
-      <div className="h-1.5 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+      <div className="h-1.5 bg-white/[0.02] rounded-full overflow-hidden">
         <div className="h-full bg-[#c9a84c] rounded-full transition-all duration-1000" style={{ width: `${pct}%` }} />
       </div>
     </div>

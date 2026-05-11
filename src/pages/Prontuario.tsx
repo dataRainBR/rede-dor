@@ -124,17 +124,17 @@ export function Prontuario() {
     <div className="space-y-6">
       <div className="grid grid-cols-2 gap-6">
         {/* Prontuário Input */}
-        <div className="bg-white rounded-xl border border-gray-100 shadow-sm">
-          <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+        <div className="glass-card rounded-2xl border border-white/10">
+          <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <FileText size={16} className="text-gray-500" />
-              <h3 className="font-semibold text-gray-800 text-sm">Prontuário do Paciente</h3>
+              <FileText size={16} className="text-white/50" />
+              <h3 className="font-semibold text-white/90 text-sm">Prontuário do Paciente</h3>
             </div>
             <span className="text-[10px] bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-medium">
               Dados fictícios
             </span>
           </div>
-          <pre className="p-5 text-[11px] leading-relaxed text-gray-700 font-mono overflow-y-auto max-h-[520px] whitespace-pre-wrap">
+          <pre className="p-5 text-[11px] leading-relaxed text-white/70 font-mono overflow-y-auto max-h-[520px] whitespace-pre-wrap">
             {prontuarioExample}
           </pre>
         </div>
@@ -144,7 +144,7 @@ export function Prontuario() {
           <button
             onClick={startAnalysis}
             disabled={running}
-            className="w-full bg-gradient-to-r from-[#1a2332] to-[#2a3a4d] text-white rounded-xl px-6 py-4 flex items-center justify-center gap-3 hover:opacity-90 transition-opacity disabled:opacity-50 cursor-pointer shadow-lg"
+            className="w-full bg-gradient-to-r from-[#1a2332] to-[#2a3a4d] text-white rounded-2xl px-6 py-4 flex items-center justify-center gap-3 hover:opacity-90 transition-opacity disabled:opacity-50 cursor-pointer shadow-lg"
           >
             {running ? <Loader2 size={20} className="animate-spin" /> : <Play size={20} />}
             <span className="font-semibold">
@@ -155,27 +155,27 @@ export function Prontuario() {
           {/* Steps */}
           <div className="space-y-3">
             {steps.map((step, i) => (
-              <div key={i} className={`bg-white rounded-xl border shadow-sm overflow-hidden transition-all ${
-                step.status === 'done' ? 'border-emerald-200' :
-                step.status === 'running' ? 'border-blue-200' : 'border-gray-100'
+              <div key={i} className={`glass-card rounded-2xl border overflow-hidden transition-all ${
+                step.status === 'done' ? 'border-emerald-500/20' :
+                step.status === 'running' ? 'border-blue-500/20' : 'border-white/10'
               }`}>
                 <div className="px-5 py-3 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <StepIcon status={step.status} />
                     <div>
-                      <p className="text-sm font-medium text-gray-800">{step.agent}</p>
-                      <p className="text-[10px] text-gray-400">Agente {i + 1} de {steps.length}</p>
+                      <p className="text-sm font-medium text-white/90">{step.agent}</p>
+                      <p className="text-[10px] text-white/30">Agente {i + 1} de {steps.length}</p>
                     </div>
                   </div>
                   {step.duration && (
-                    <span className="text-[10px] text-gray-400 flex items-center gap-1">
+                    <span className="text-[10px] text-white/30 flex items-center gap-1">
                       <Clock size={10} />{step.duration}
                     </span>
                   )}
                 </div>
                 {step.output && (
                   <div className="px-5 pb-4">
-                    <pre className="text-[11px] leading-relaxed text-gray-700 bg-gray-50 rounded-lg p-3 whitespace-pre-wrap font-mono">
+                    <pre className="text-[11px] leading-relaxed text-white/70 bg-white/[0.02] rounded-lg p-3 whitespace-pre-wrap font-mono">
                       {step.output}
                     </pre>
                   </div>
@@ -192,5 +192,5 @@ export function Prontuario() {
 function StepIcon({ status }: { status: string }) {
   if (status === 'done') return <CheckCircle2 size={18} className="text-emerald-500" />
   if (status === 'running') return <Loader2 size={18} className="text-blue-500 animate-spin" />
-  return <Bot size={18} className="text-gray-300" />
+  return <Bot size={18} className="text-white/30" />
 }
